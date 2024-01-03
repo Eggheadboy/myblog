@@ -32,15 +32,24 @@ var Paul_Hingle = function (config) {
         })
     };
 
+    // discus关灯切换
     // 关灯切换
     this.night = function () {
+        //var dapp = document.getElementById("giscus-theme").href;
         if(body.classList.contains("dark-theme")){
             body.classList.remove("dark-theme");
             document.cookie = "night=false;" + "path=/;" + "max-age=21600";
+            //discusapp.setAttribute('href','/themes/light.css');
+            //document.getElementById("giscus-theme").setAttribute("href","/themes/light.css");
+            //dapp = "/themes/light.css";
+            //console.log(dapp);
         }
         else{
             body.classList.add("dark-theme");
             document.cookie = "night=true;" + "path=/;" + "max-age=21600";
+            //discusapp.setAttribute('href','/themes/dark.css');
+            //document.getElementById("giscus-theme").setAttribute("href","/themes/dark.css");
+            //dapp = "/themes/dark.css";
         }
     };
 

@@ -13,9 +13,9 @@
     
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <!--<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
     <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script src="/static/md5.min.js"></script>
+    <script src="/static/md5.min.js"></script>-->
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="蛋頭boy的小站">
     <meta property="og:title" content="Hello World"/>
@@ -93,20 +93,21 @@
         <section class="post-near">
             <div class="row">
                 <div class="col-12"><h2>留言板</h2></div>
-                
-                    <div class="col-12" id="gitalk-container"><!--<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>-->
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        accessToken: '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',
-        id: md5(window.location.pathname),/**/
-        repo: 'blog-comment',
-        owner: 'Eggheadboy',
-        admin: 'Eggheadboy',
-        distractionFreeMode: 'true'
-    })
-    gitalk.render('gitalk-container')
+                <div class="col-12"><script src="https://giscus.app/client.js"
+        data-repo="Eggheadboy/blog-comment"
+        data-repo-id="R_kgDOK_3h3A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOK_3h3M4CcKE3"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark"
+        data-lang="zh-TW"
+        crossorigin="anonymous"
+        async>
 </script></div>
-                
             </div>
         </section>
         
