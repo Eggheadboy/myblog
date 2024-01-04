@@ -38,7 +38,6 @@ var Paul_Hingle = function (config) {
         //var dapp = document.getElementById("giscus-theme").href;
         //var akk = document.querySelector("body > main > div > section:nth-child(4) > div > div:nth-child(2) > div > iframe").contentWindow;
         //var bkk = akk.document.getElementById("giscus-theme");
-
         if(body.classList.contains("dark-theme")){
             body.classList.remove("dark-theme");
             document.cookie = "night=false;" + "path=/;" + "max-age=21600";
