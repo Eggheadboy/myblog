@@ -36,6 +36,19 @@ var Paul_Hingle = function (config) {
     // 关灯切换
     this.night = function () {
         //var dapp = document.getElementById("giscus-theme").href;
+        //var akk = document.querySelector("body > main > div > section:nth-child(4) > div > div:nth-child(2) > div > iframe").contentWindow;
+        //var bkk = akk.document.getElementById("giscus-theme");
+        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ?  'dark' : 'light'
+        function sendMessage(message) {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (!iframe) return;
+            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+          }
+          sendMessage({
+            setConfig: {
+              theme: theme
+            }
+          })
         if(body.classList.contains("dark-theme")){
             body.classList.remove("dark-theme");
             document.cookie = "night=false;" + "path=/;" + "max-age=21600";
@@ -43,6 +56,7 @@ var Paul_Hingle = function (config) {
             //document.getElementById("giscus-theme").setAttribute("href","/themes/light.css");
             //dapp = "/themes/light.css";
             //console.log(dapp);
+            //bkk.setAttribute('href','/themes/light.css');
         }
         else{
             body.classList.add("dark-theme");
@@ -50,6 +64,7 @@ var Paul_Hingle = function (config) {
             //discusapp.setAttribute('href','/themes/dark.css');
             //document.getElementById("giscus-theme").setAttribute("href","/themes/dark.css");
             //dapp = "/themes/dark.css";
+            //bkk.setAttribute('href','/themes/dark.css');
         }
     };
 
