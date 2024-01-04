@@ -9,6 +9,51 @@
 本代码为奇趣保罗原创，并遵守 MIT 开源协议。欢迎访问我的博客：https://paugram.com
 
 ---- */
+/*discus載入時dark or light*/
+document.addEventListener('DOMContentLoaded', function () {
+    const giscusAttributesdark = {
+    "src": "https://giscus.app/client.js",
+    "data-repo": "Eggheadboy/blog-comment",
+    "data-repo-id": "R_kgDOK_3h3A",
+    "data-category": "Announcements",
+    "data-category-id": "DIC_kwDOK_3h3M4CcKE3",
+    "data-mapping": "title",
+    "data-strict": "0",
+    "data-reactions-enabled": "1",
+    "data-emit-metadata": "0",
+    "data-input-position": "top",
+    "data-theme": "dark",
+    "data-lang": "zh-TW",
+    "crossorigin": "anonymous",
+    "async": "",
+    };
+    const giscusAttributeslight = {
+    "src": "https://giscus.app/client.js",
+    "data-repo": "Eggheadboy/blog-comment",
+    "data-repo-id": "R_kgDOK_3h3A",
+    "data-category": "Announcements",
+    "data-category-id": "DIC_kwDOK_3h3M4CcKE3",
+    "data-mapping": "title",
+    "data-strict": "0",
+    "data-reactions-enabled": "1",
+    "data-emit-metadata": "0",
+    "data-input-position": "top",
+    "data-theme": "light",
+    "data-lang": "zh-TW",
+    "crossorigin": "anonymous",
+    "async": "",
+    };
+    var body = document.body;
+    if(body.classList.contains("dark-theme")){
+            var giscusScript = document.createElement("script");
+            Object.entries(giscusAttributesdark).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    }
+    else {
+            var giscusScript = document.createElement("script");
+            Object.entries(giscusAttributeslight).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    }
+    document.querySelector('#giscusapp').appendChild(giscusScript);
+});
 
 var Paul_Hingle = function (config) {
     var body = document.body;
