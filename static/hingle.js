@@ -38,6 +38,17 @@ var Paul_Hingle = function (config) {
         //var dapp = document.getElementById("giscus-theme").href;
         //var akk = document.querySelector("body > main > div > section:nth-child(4) > div > div:nth-child(2) > div > iframe").contentWindow;
         //var bkk = akk.document.getElementById("giscus-theme");
+        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ?  'dark' : 'light'
+        function sendMessage(message) {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (!iframe) return;
+            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+          }
+          sendMessage({
+            setConfig: {
+              theme: theme
+            }
+          })
         if(body.classList.contains("dark-theme")){
             body.classList.remove("dark-theme");
             document.cookie = "night=false;" + "path=/;" + "max-age=21600";
