@@ -28,6 +28,18 @@
 <meta name="generator" content="Hexo 7.0.0"></head>
 
   <body>
+    <script>
+      var sessiondarklight = sessionStorage.getItem('dark or light');
+      if (sessiondarklight == 'dark'){
+        document.body.classList.add("dark-theme");
+      }
+      else if (sessiondarklight == 'light'){
+        document.body.classList.add("7");
+      }
+      else if (!sessiondarklight) {
+        document.body.classList.add("7");
+      }
+    </script>
     <header>
     <div class="head-title">
         <h4>蛋頭boy的小站</h4>

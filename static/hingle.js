@@ -52,7 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var giscusScript = document.createElement("script");
             Object.entries(giscusAttributeslight).forEach(([key, value]) => giscusScript.setAttribute(key, value));
     }
-    document.querySelector('#giscusapp').appendChild(giscusScript);
+    var giscusappend = document.querySelector('#giscusapp');
+    if (!giscusappend) return;
+    giscusappend.appendChild(giscusScript);
 });
 
 var Paul_Hingle = function (config) {
@@ -83,6 +85,7 @@ var Paul_Hingle = function (config) {
         if(body.classList.contains("dark-theme")){
             body.classList.remove("dark-theme");
             document.cookie = "night=false;" + "path=/;" + "max-age=21600";
+            sessionStorage.setItem('dark or light', 'light');
             var theme = document.documentElement.getAttribute('data-theme') === 'dark' ?  'dark' : 'light';
             function sendMessage(message) {
                 var iframe = document.querySelector('iframe.giscus-frame');
@@ -99,6 +102,7 @@ var Paul_Hingle = function (config) {
         else{
             body.classList.add("dark-theme");
             document.cookie = "night=true;" + "path=/;" + "max-age=21600";
+            sessionStorage.setItem('dark or light', 'dark');
             var theme = document.documentElement.getAttribute('data-theme') === 'light' ?  'light' : 'dark';
             function sendMessage(message) {
                 var iframe = document.querySelector('iframe.giscus-frame');
@@ -208,20 +212,29 @@ var Paul_Hingle = function (config) {
     // 如果开启自动夜间模式
     if(config.night){
         var hour = new Date().getHours();
-
-        if(document.cookie.indexOf("night") === -1 && (hour <= 5 || hour >= 22)){
-            document.body.classList.add("dark-theme");
-            document.cookie = "night=true;" + "path=/;" + "max-age=21600";
+        var sessiondarklight = sessionStorage.getItem('dark or light');
+        if(hour <= 6 || hour >= 18){
+            if(sessiondarklight == 'dark'){
+                document.body.classList.add("dark-theme");
+            }
+            else if(!sessiondarklight) {
+                document.body.classList.add("dark-theme");
+            };
         }
     }
-    else if(document.cookie.indexOf("night") !== -1){
+    /*else if(document.cookie.indexOf("night") !== -1){
         if(document.cookie.indexOf("night=true") !== -1){
-            document.body.classList.add("dark-theme");
+            if(sessionStorage.getItem('dark or light') !== 'light'){
+                document.body.classList.add("dark-theme");
+            }
+            else if(!sessionStorage.getItem('dark or light')) {
+                document.body.classList.add("dark-theme");
+            };
         }
         else{
             document.body.classList.remove("dark-theme");
         }
-    }
+    }*/
 
     // 如果开启复制内容提示
     if(config.copyright){
