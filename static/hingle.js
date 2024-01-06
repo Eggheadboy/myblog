@@ -210,7 +210,7 @@ var Paul_Hingle = function (config) {
     window.addEventListener("scroll", this.to_top);
 
     // 如果开启自动夜间模式
-    if(config.night){
+    /*if(config.night){
         var hour = new Date().getHours();
         var sessiondarklight = sessionStorage.getItem('dark or light');
         if(hour <= 6 || hour >= 21){
@@ -220,6 +220,30 @@ var Paul_Hingle = function (config) {
             else if(!sessiondarklight) {
                 document.body.classList.add("dark-theme");
             };
+        }
+    }*/
+    if(config.night){
+        var sessiondarklight = sessionStorage.getItem('dark or light');
+        var hour = new Date().getHours();
+        if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches){
+            if(sessiondarklight == 'dark'){
+                document.body.classList.add("dark-theme");
+            }
+            else if(!sessiondarklight) {
+                document.body.classList.add("dark-theme");
+                sessionStorage.setItem('dark or light','dark');
+            };
+        }
+        else{
+            if(hour <= 6 || hour >= 21){
+                if(sessiondarklight == 'dark'){
+                    document.body.classList.add("dark-theme");
+                }
+                else if(!sessiondarklight) {
+                    document.body.classList.add("dark-theme");
+                    sessionStorage.setItem('dark or light','dark');
+                };
+            }
         }
     }
     /*else if(document.cookie.indexOf("night") !== -1){
