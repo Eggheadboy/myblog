@@ -247,14 +247,14 @@ var Paul_Hingle = function (config) {
     // ! Hexo 特别功能
     //
 
-    // Hexo 百度搜索
+    // Hexo 百度搜索，改google
     this.hexo_search = function () {
         var form = ks.select(".head-search"), input = ks.select(".head-search input");
 
         form.onsubmit = function (ev) {
             ev.preventDefault();
 
-            window.open("https://www.baidu.com/s?wd=site:" + location.host + " " + input.value.trim());
+            window.open("http://www.google.com/search?q=site:" + location.host + " " + input.value.trim());
         }        
     }
 
