@@ -43,8 +43,8 @@ body:before{
     z-index: -1;
     display: block;
     position: fixed;
-    background: right/cover no-repeat;/*原本是center*/
-}
+    background: white right top/cover no-repeat;/*原本是center*/
+} 
 
 ::-webkit-scrollbar{
     width: 8px;
