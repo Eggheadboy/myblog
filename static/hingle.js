@@ -213,7 +213,7 @@ var Paul_Hingle = function (config) {
     if(config.night){
         var hour = new Date().getHours();
         var sessiondarklight = sessionStorage.getItem('dark or light');
-        if(hour <= 6 || hour >= 18){
+        if(hour <= 6 || hour >= 21){
             if(sessiondarklight == 'dark'){
                 document.body.classList.add("dark-theme");
             }
