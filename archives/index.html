@@ -34,11 +34,8 @@
       if (sessiondarklight == 'dark'){
         document.body.classList.add("dark-theme");
       }
-      else if (sessiondarklight == 'light'){
-        document.body.classList.add("7");
-      }
       else if (!sessiondarklight) {
-        document.body.classList.add("7");
+        sessionStorage.setItem('dark or light','light');
       }
     </script>
     <header>

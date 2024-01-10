@@ -234,9 +234,9 @@ var Paul_Hingle = function (config) {
                 sessionStorage.setItem('dark or light','dark');
             };
         }
-        else{
-            if(hour <= 6 || hour >= 21){
-                if(sessiondarklight == 'dark'){
+        else {
+            if(hour <= 6 || hour >= 21) {
+                if(sessiondarklight == 'dark') {
                     document.body.classList.add("dark-theme");
                 }
                 else if(!sessiondarklight) {
