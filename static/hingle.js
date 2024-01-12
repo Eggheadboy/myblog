@@ -229,7 +229,7 @@ var Paul_Hingle = function (config) {
             if(sessiondarklight == 'dark'){
                 document.body.classList.add("dark-theme");
             }
-            else if(!sessiondarklight) {
+            else if(sessiondarklight == 'pre') {
                 document.body.classList.add("dark-theme");
                 sessionStorage.setItem('dark or light','dark');
             };
@@ -239,7 +239,7 @@ var Paul_Hingle = function (config) {
                 if(sessiondarklight == 'dark') {
                     document.body.classList.add("dark-theme");
                 }
-                else if(!sessiondarklight) {
+                else if(sessiondarklight == 'pre') {
                     document.body.classList.add("dark-theme");
                     sessionStorage.setItem('dark or light','dark');
                 };
