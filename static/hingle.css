@@ -28,7 +28,7 @@
 }
 
 body{
-    color: #555;
+    color: #333;
     font-weight: 300;
     background: #fafafa;
     transition: margin .3s, background .3s;
@@ -117,7 +117,7 @@ input, textarea, pre, hr, blockquote{
 
 /* - 夜间风格 */
 .dark-theme{
-    color: #bbb;
+    color: #ddd;
     background-color: #222;
 
     --blue: #6e8aad;
@@ -136,8 +136,8 @@ input, textarea, pre, hr, blockquote{
 }
 
 .dark-theme img{
-    filter: brightness(60%);
-    -webkit-filter: brightness(60%);
+    filter: brightness(70%);
+    -webkit-filter: brightness(70%);
 }
 
 .dark-theme pre{
@@ -161,7 +161,7 @@ input, textarea, pre, hr, blockquote{
     background: #666;
     border-color: transparent;
 }
-.dark-theme .head-search input::-webkit-input-placeholder{ color: #bbb }
+.dark-theme .head-search input::-webkit-input-placeholder{ color: #ddd }
 
 /* 1 - 页眉
 -------------------------------- */

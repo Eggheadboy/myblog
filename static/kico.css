@@ -681,6 +681,10 @@ table tbody tr:hover{
     background-color: #eee;
     background-color: var(--lighter-gray);
 }
+.dark-theme table tbody tr:hover{
+    background-color: #555;
+    background-color: #555;
+}
 
 /* - 蓝色风格 */
 table.fill{
