@@ -44,7 +44,23 @@ body:before{
     display: block;
     position: fixed;
     background: white top right/cover no-repeat;/*原本是center*/
-} 
+}
+
+@media screen and (max-height: 599px){
+    body:before{
+        min-height: 600px;
+    }
+}
+@media screen and (min-height: 600px)and (max-height: 899px){
+    body:before{
+        min-height: 900px;
+    }
+}
+@media screen and (min-height: 900px)and (max-height: 1199px){
+    body:before{
+        min-height: 1200px;
+    }
+}
 
 ::-webkit-scrollbar{
     width: 8px;
@@ -631,6 +647,7 @@ article h1:before{ font-weight: bold }
 .post-comments input, .post-comments textarea{
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
 }
 
 /* -- 评论结构 */
