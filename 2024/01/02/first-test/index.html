@@ -47,8 +47,9 @@
         <div class="light-btn"></div>
         <div class="search-btn"></div>
     </div>
-    <form class="head-search" method="post">
-        <input type="text" name="s" placeholder="搜尋">
+    <form class="head-search" method="get" action="https://www.google.com/cse" id="cse-search-box" target="_self">
+        <input type="hidden" name="cx" value="85638ecf1b9544e37" />
+        <input type="text" name="q" placeholder="搜尋" />
     </form>
     <nav class="head-menu">
         <a href="/">首頁</a>

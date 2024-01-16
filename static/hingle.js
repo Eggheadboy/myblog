@@ -272,7 +272,7 @@ var Paul_Hingle = function (config) {
     //
 
     // Hexo 百度搜索，改google
-    this.hexo_search = function () {
+    /*this.hexo_search = function () {
         var form = ks.select(".head-search"), input = ks.select(".head-search input");
 
         form.onsubmit = function (ev) {
@@ -282,7 +282,7 @@ var Paul_Hingle = function (config) {
         }        
     }
 
-    this.hexo_search();
+    this.hexo_search();*/
 };
 
 // 图片缩放
