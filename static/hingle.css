@@ -61,6 +61,16 @@ body:before{
         min-height: 1200px;
     }
 }
+@media screen and (max-width: 399px){
+    body:before{
+        background-position-x: 92%;
+    }
+}
+@media screen and (min-width: 400px)and (max-width: 799px){
+    body:before{
+        background-position-x: 96%;
+    }
+}
 
 ::-webkit-scrollbar{
     width: 8px;
