@@ -9,54 +9,60 @@
 本代码为奇趣保罗原创，并遵守 MIT 开源协议。欢迎访问我的博客：https://paugram.com
 
 ---- */
-
+pjax = new Pjax({
+    selectors: ["head title", "#mainmain", "script[data-pjax], .pjax-reload script"],
+    cacheBust: false,
+});
 /*discus載入時dark or light*/
-    document.addEventListener('DOMContentLoaded', function () {
-        const giscusAttributesdark = {
-            "src": "https://giscus.app/client.js",
-            "data-repo": "Eggheadboy/blog-comment",
-            "data-repo-id": "R_kgDOK_3h3A",
-            "data-category": "Announcements",
-            "data-category-id": "DIC_kwDOK_3h3M4CcKE3",
-            "data-mapping": "title",
-            "data-strict": "0",
-            "data-reactions-enabled": "1",
-            "data-emit-metadata": "0",
-            "data-input-position": "top",
-            "data-theme": "dark",
-            "data-lang": "zh-TW",
-            "crossorigin": "anonymous",
-            "async": "",
-        };
-        const giscusAttributeslight = {
-            "src": "https://giscus.app/client.js",
-            "data-repo": "Eggheadboy/blog-comment",
-            "data-repo-id": "R_kgDOK_3h3A",
-            "data-category": "Announcements",
-            "data-category-id": "DIC_kwDOK_3h3M4CcKE3",
-            "data-mapping": "title",
-            "data-strict": "0",
-            "data-reactions-enabled": "1",
-            "data-emit-metadata": "0",
-            "data-input-position": "top",
-            "data-theme": "light",
-            "data-lang": "zh-TW",
-            "crossorigin": "anonymous",
-            "async": "",
-        };
-        var body = document.body;
-        if (body.classList.contains("dark-theme")) {
-            var giscusScript = document.createElement("script");
-            Object.entries(giscusAttributesdark).forEach(([key, value]) => giscusScript.setAttribute(key, value));
-        }
-        else {
-            var giscusScript = document.createElement("script");
-            Object.entries(giscusAttributeslight).forEach(([key, value]) => giscusScript.setAttribute(key, value));
-        }
-        var giscusappend = document.querySelector('#giscusapp');
-        if (!giscusappend) return;
-        giscusappend.appendChild(giscusScript);
-    });
+discusloading = function (){
+    const giscusAttributesdark = {
+        "src": "https://giscus.app/client.js",
+        "data-repo": "Eggheadboy/blog-comment",
+        "data-repo-id": "R_kgDOK_3h3A",
+        "data-category": "Announcements",
+        "data-category-id": "DIC_kwDOK_3h3M4CcKE3",
+        "data-mapping": "title",
+        "data-strict": "0",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "top",
+        "data-theme": "dark",
+        "data-lang": "zh-TW",
+        "crossorigin": "anonymous",
+        "async": "",
+    };
+    const giscusAttributeslight = {
+        "src": "https://giscus.app/client.js",
+        "data-repo": "Eggheadboy/blog-comment",
+        "data-repo-id": "R_kgDOK_3h3A",
+        "data-category": "Announcements",
+        "data-category-id": "DIC_kwDOK_3h3M4CcKE3",
+        "data-mapping": "title",
+        "data-strict": "0",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "top",
+        "data-theme": "light",
+        "data-lang": "zh-TW",
+        "crossorigin": "anonymous",
+        "async": "",
+    };
+    var body = document.body;
+    if (body.classList.contains("dark-theme")) {
+        var giscusScript = document.createElement("script");
+        Object.entries(giscusAttributesdark).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    }
+    else {
+        var giscusScript = document.createElement("script");
+        Object.entries(giscusAttributeslight).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    }
+    var giscusappend = document.querySelector('#giscusapp');
+    if (!giscusappend) return;
+    giscusappend.appendChild(giscusScript);
+}
+document.addEventListener('DOMContentLoaded', function () {
+    discusloading();
+});
 
 var Paul_Hingle = function (config) {
     var body = document.body;
@@ -288,6 +294,86 @@ var Paul_Hingle = function (config) {
 
 // 图片缩放
 ks.image(".post-content:not(.is-special) img, .page-content:not(.is-special) img");
+
+//pjax完成後
+document.addEventListener('pjax:complete', function (){
+    var body = document.body;
+    //menu開著就關掉
+    var menu = document.querySelector("body > header > nav");
+    if (menu.classList.contains("active")){
+        menu.classList.toggle("active");
+    }
+    // 需要重载的 JS 函数
+    ks.image("img"); // 重载 Kico Style 的图片灯箱
+    discusloading();//重載discus
+    var inhome = document.querySelector('.home-title');//首頁讓main回復原本寬度，並刪掉目錄紐
+    if (inhome){
+        body.classList.remove("has-trees");
+        var pa = document.querySelector("body > footer > div.buttons");
+        var ch = document.querySelector("body > footer > div.buttons > a.toggle-list");
+        if (!ch) return;
+        pa.removeChild(ch);
+        return;
+    }
+    //重載目錄樹
+    var content = ks.select(".post-content:not(.is-special), .page-content:not(.is-special)");
+    tree = function () {
+        var id = 1;
+        var wrap = ks.select(".wrap");
+        var headings = content.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        if(headings.length > 0){
+            body.classList.add("has-trees");
+
+            var trees = ks.create("section", {
+                class: "article-list",
+                html: "<h4><span class=\"title\">目錄</span></h4>"
+            });
+
+            ks.each(headings, function (t) {
+                var cls, text = t.innerText;
+
+                t.id = "title-" + id;
+
+                switch (t.tagName){
+                    case "H2": cls = "item-2"; break;
+                    case "H3": cls = "item-3"; break;
+                    case "H4": cls = "item-4"; break;
+                    case "H5": cls = "item-5"; break;
+                    case "H6": cls = "item-6"; break;
+                }
+
+                trees.appendChild(ks.create("a", {class: cls, text: text, href: "#title-" + id}));
+
+                id++;
+            });
+
+            wrap.appendChild(trees);
+            
+            function toggle_tree() {
+                var buttons = ks.select("footer .buttons");
+                var btn = ks.create("a", {class: "toggle-list"});
+                buttons.appendChild(btn);
+
+                btn.addEventListener("click", function () {
+                    trees.classList.toggle("active");
+                })
+            }
+            var havebtn = document.querySelector('.toggle-list');//沒目錄紐加目錄紐，有目錄紐讓開關功能回復
+            if (!havebtn) {
+                toggle_tree();
+            }
+            else {
+                var buttons = ks.select("footer .buttons");
+                buttons.addEventListener("click", function () {
+                    trees.classList.toggle("active");
+                })
+            }
+            
+        }
+    };
+    tree();
+});
 
 // 请保留版权说明
 if(window.console && window.console.log){
