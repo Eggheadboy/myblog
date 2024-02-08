@@ -304,7 +304,7 @@ document.addEventListener('pjax:complete', function (){
         menu.classList.toggle("active");
     }
     // 需要重载的 JS 函数
-    ks.image("img"); // 重载 Kico Style 的图片灯箱
+    ks.image(".post-content img"); // 重载 Kico Style 的图片灯箱
     discusloading();//重載discus
     var inhome = document.querySelector('.home-title');//首頁讓main回復原本寬度，並刪掉目錄紐
     if (inhome){
