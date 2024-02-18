@@ -10,7 +10,7 @@
 
 ---- */
 pjax = new Pjax({
-    selectors: ["head title", "#mainmain", "script[data-pjax], .pjax-reload script"],
+    selectors: ["head title", "head > meta", "#mainmain", "script[data-pjax], .pjax-reload script"],
     cacheBust: false,
 });
 /*discus載入時dark or light*/
