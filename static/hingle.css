@@ -595,11 +595,11 @@ article h1:before{ font-weight: bold }
 }
 .post-near .r{
     text-align: right;
-    border-left: solid 0.25rem;
+    border-left: solid 1px;
     border-color: #333;
 }
 .post-near .l{
-    border-right: solid 0.25rem;
+    border-right: solid 1px;
     border-color: #333;
 }
 
