@@ -189,6 +189,14 @@ input, textarea, pre, hr, blockquote{
 }
 .dark-theme .head-search input::-webkit-input-placeholder{ color: #ddd }
 
+.dark-theme .post-near .r{
+    border-color: #ddd;
+}
+
+.dark-theme .post-near .l{
+    border-color: #ddd;
+}
+
 /* 1 - 页眉
 -------------------------------- */
 header{
@@ -584,6 +592,15 @@ article h1:before{ font-weight: bold }
 /* - 阅读页其他文章 */
 .post-near{
     animation: fade-in-top .3s .3s backwards; -webkit-animation: fade-in-top .3s .3s backwards;
+}
+.post-near .r{
+    text-align: right;
+    border-left: solid 0.25rem;
+    border-color: #333;
+}
+.post-near .l{
+    border-right: solid 0.25rem;
+    border-color: #333;
 }
 
 /* - 阅读页文章标签 */
