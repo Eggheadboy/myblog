@@ -162,8 +162,8 @@ input, textarea, pre, hr, blockquote{
 }
 
 .dark-theme img{
-    filter: brightness(70%);
-    -webkit-filter: brightness(70%);
+    filter: brightness(80%);
+    -webkit-filter: brightness(80%);
 }
 
 .dark-theme pre{
@@ -483,6 +483,9 @@ main img {
     transition: color .3s, border-color .3s;
 }
 
+.dark-theme .post-item h2 a{
+    border-color: #666;
+}
 .post-item .edit-link{
     font-size: 1rem;
     line-height: inherit;
